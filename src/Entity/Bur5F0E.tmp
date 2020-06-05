@@ -1,0 +1,142 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\BureauDirecteurRepository")
+ */
+class BureauDirecteur
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $DateDebutMondat;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $DateFinMondat;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\adherant", cascade={"persist", "remove"})
+     */
+    private $president;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\adherant", cascade={"persist", "remove"})
+     */
+    private $vicePresident;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\adherant", inversedBy="bureauDirecteur", cascade={"persist", "remove"})
+     */
+    private $tresorier;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\adherant", cascade={"persist", "remove"})
+     */
+    private $secretaireGeneral;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\adherant", cascade={"persist", "remove"})
+     */
+    private $membres;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getDateDebutMondat(): ?\DateTimeInterface
+    {
+        return $this->DateDebutMondat;
+    }
+
+    public function setDateDebutMondat(?\DateTimeInterface $DateDebutMondat): self
+    {
+        $this->DateDebutMondat = $DateDebutMondat;
+
+        return $this;
+    }
+
+    public function getDateFinMondat(): ?\DateTimeInterface
+    {
+        return $this->DateFinMondat;
+    }
+
+    public function setDateFinMondat(?\DateTimeInterface $DateFinMondat): self
+    {
+        $this->DateFinMondat = $DateFinMondat;
+
+        return $this;
+    }
+
+    public function getPresident(): ?adherant
+    {
+        return $this->president;
+    }
+
+    public function setPresident(?adherant $president): self
+    {
+        $this->president = $president;
+
+        return $this;
+    }
+
+    public function getVicePresident(): ?adherant
+    {
+        return $this->vicePresident;
+    }
+
+    public function setVicePresident(?adherant $vicePresident): self
+    {
+        $this->vicePresident = $vicePresident;
+
+        return $this;
+    }
+
+    public function getTresorier(): ?adherant
+    {
+        return $this->tresorier;
+    }
+
+    public function setTresorier(?adherant $tresorier): self
+    {
+        $this->tresorier = $tresorier;
+
+        return $this;
+    }
+
+    public function getSecretaireGeneral(): ?adherant
+    {
+        return $this->secretaireGeneral;
+    }
+
+    public function setSecretaireGeneral(?adherant $secretaireGeneral): self
+    {
+        $this->secretaireGeneral = $secretaireGeneral;
+
+        return $this;
+    }
+
+    public function getMembres(): ?adherant
+    {
+        return $this->membres;
+    }
+
+    public function setMembres(?adherant $membres): self
+    {
+        $this->membres = $membres;
+
+        return $this;
+    }
+}

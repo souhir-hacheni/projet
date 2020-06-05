@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\BureauDirecteurRepository")
+ */
+class BureauDirecteur
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $president;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $vicePresident;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getPresident(): ?string
+    {
+        return $this->president;
+    }
+
+    public function setPresident(?string $president): self
+    {
+        $this->president = $president;
+
+        return $this;
+    }
+
+    public function getVicePresident(): ?string
+    {
+        return $this->vicePresident;
+    }
+
+    public function setVicePresident(?string $vicePresident): self
+    {
+        $this->vicePresident = $vicePresident;
+
+        return $this;
+    }
+}

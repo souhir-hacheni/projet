@@ -1,0 +1,185 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\BureauDirecteurRepository")
+ */
+class BureauDirecteur
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $president;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $vicePrisedent;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $tresorier;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $SecretaireGeneral;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $membres;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateDebMondat;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateFinMondat;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Adherant", mappedBy="IdAdherant")
+     */
+    private $idAdherant;
+
+    public function __construct()
+    {
+        $this->idAdherant = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getPresident(): ?string
+    {
+        return $this->president;
+    }
+
+    public function setPresident(?string $president): self
+    {
+        $this->president = $president;
+
+        return $this;
+    }
+
+    public function getVicePrisedent(): ?string
+    {
+        return $this->vicePrisedent;
+    }
+
+    public function setVicePrisedent(?string $vicePrisedent): self
+    {
+        $this->vicePrisedent = $vicePrisedent;
+
+        return $this;
+    }
+
+    public function getTresorier(): ?string
+    {
+        return $this->tresorier;
+    }
+
+    public function setTresorier(?string $tresorier): self
+    {
+        $this->tresorier = $tresorier;
+
+        return $this;
+    }
+
+    public function getSecretaireGeneral(): ?string
+    {
+        return $this->SecretaireGeneral;
+    }
+
+    public function setSecretaireGeneral(?string $SecretaireGeneral): self
+    {
+        $this->SecretaireGeneral = $SecretaireGeneral;
+
+        return $this;
+    }
+
+    public function getMembres(): ?string
+    {
+        return $this->membres;
+    }
+
+    public function setMembres(?string $membres): self
+    {
+        $this->membres = $membres;
+
+        return $this;
+    }
+
+    public function getDateDebMondat(): ?\DateTimeInterface
+    {
+        return $this->dateDebMondat;
+    }
+
+    public function setDateDebMondat(?\DateTimeInterface $dateDebMondat): self
+    {
+        $this->dateDebMondat = $dateDebMondat;
+
+        return $this;
+    }
+
+    public function getDateFinMondat(): ?\DateTimeInterface
+    {
+        return $this->dateFinMondat;
+    }
+
+    public function setDateFinMondat(?\DateTimeInterface $dateFinMondat): self
+    {
+        $this->dateFinMondat = $dateFinMondat;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Adherant[]
+     */
+    public function getIdAdherant(): Collection
+    {
+        return $this->idAdherant;
+    }
+
+    public function addIdAdherant(Adherant $idAdherant): self
+    {
+        if (!$this->idAdherant->contains($idAdherant)) {
+            $this->idAdherant[] = $idAdherant;
+            $idAdherant->setIdAdherant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdAdherant(Adherant $idAdherant): self
+    {
+        if ($this->idAdherant->contains($idAdherant)) {
+            $this->idAdherant->removeElement($idAdherant);
+            // set the owning side to null (unless already changed)
+            if ($idAdherant->getIdAdherant() === $this) {
+                $idAdherant->setIdAdherant(null);
+            }
+        }
+
+        return $this;
+    }
+}

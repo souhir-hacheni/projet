@@ -1,0 +1,125 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\EvenementRepository")
+ */
+class Evenement
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nomEvenement;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $typeEvenement;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $participate;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateDebEv;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateFinEv;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $NomResponsableEv;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getNomEvenement(): ?string
+    {
+        return $this->nomEvenement;
+    }
+
+    public function setNomEvenement(?string $nomEvenement): self
+    {
+        $this->nomEvenement = $nomEvenement;
+
+        return $this;
+    }
+
+    public function getTypeEvenement(): ?string
+    {
+        return $this->typeEvenement;
+    }
+
+    public function setTypeEvenement(?string $typeEvenement): self
+    {
+        $this->typeEvenement = $typeEvenement;
+
+        return $this;
+    }
+
+    public function getParticipate(): ?string
+    {
+        return $this->participate;
+    }
+
+    public function setParticipate(?string $participate): self
+    {
+        $this->participate = $participate;
+
+        return $this;
+    }
+
+    public function getDateDebEv(): ?\DateTimeInterface
+    {
+        return $this->dateDebEv;
+    }
+
+    public function setDateDebEv(?\DateTimeInterface $dateDebEv): self
+    {
+        $this->dateDebEv = $dateDebEv;
+
+        return $this;
+    }
+
+    public function getDateFinEv(): ?\DateTimeInterface
+    {
+        return $this->dateFinEv;
+    }
+
+    public function setDateFinEv(?\DateTimeInterface $dateFinEv): self
+    {
+        $this->dateFinEv = $dateFinEv;
+
+        return $this;
+    }
+
+    public function getNomResponsableEv(): ?string
+    {
+        return $this->NomResponsableEv;
+    }
+
+    public function setNomResponsableEv(?string $NomResponsableEv): self
+    {
+        $this->NomResponsableEv = $NomResponsableEv;
+
+        return $this;
+    }
+}

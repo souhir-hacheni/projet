@@ -1,0 +1,115 @@
+{% extends 'base2.html.twig' %}
+
+{% block titre %}Adhésion - ARDI{% endblock %}
+{% block titrePage %}Adhésion{% endblock %}
+
+{% block body %}
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading left">
+                        <h4>Formulaire d'Adhésion</h4></div>
+                    <div class="contact-form-box margin-30px-top">
+                        <div class="no-margin-lr" id="success-contact-form" style="display: none;"></div>
+
+                        <div class="row">
+                            {{ form_start(frm) }}
+                            {% if not frm.vars.valid %}
+                                <div class="alert alert-error">
+                                    <h3>Erreur : Il y a un ou plusieurs champs invalides</h3>
+                                </div>
+                            {% endif %}
+
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                {{ form_row(frm.prenom) }}
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                {{ form_row(frm.nom) }}
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                {{ form_row(frm.cin) }}
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                {{ form_row(frm.fonction) }}
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <label class="required">Date de naissance</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                {{ form_row(frm.datNaiss) }}
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                {{ form_row(frm.adresse) }}
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                {{ form_row(frm.email) }}
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                {{ form_row(frm.tel1) }}
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                {{ form_row(frm.tel2) }}
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                {{ form_row(frm.photoFichier) }}
+                            </div>
+
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 sm-margin-30px-bottom">
+                                <div class="top-contact wow fadeInRight text-left" style="visibility: visible; animation-name: fadeInRight;">
+                                    {{ form_row(frm.valider) }}
+                                </div>
+                            </div>
+                            {{ form_end(frm) }}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-info-box padding-30px-left sm-no-padding">
+                        <div class="row">
+                            <div class="col-12">
+
+                                <div class="section-heading left">
+                                    <h4>Paiement</h4></div>
+
+                                <ul>
+                                    <li><b>Frais d'adhésion :</b> 15 DT</li>
+                                    <li><b>Modes de paiement :</b> </li>
+                                    <ul class="list-group">
+                                        <li class="list-group-item list-group-item-action"> <strong><em>Espèces</em></strong> ou <strong><em>chèque</em></strong> payable au trésorier de l'Association</li>
+                                        <li class="list-group-item"><strong><em>Virement bancaire </em></strong><br>
+                                            <pr>
+                                                RIB : 17 70 100 000 021 14507 07<br>
+                                                Une copie de l'ordre de virement doit être remis au trésorier de l'ARDI.
+                                            </pr></li>
+                                    </ul>
+                                </ul>
+
+                                <h4>Le Trésorier</h4>
+                                <ul class="list-style-1 no-margin-bottom">
+                                    <li>
+                                        <p><i class="fa fa-globe text-center"></i> <strong>Addresse:</strong> ISET Sfax. Rte Mahdia Km 2,5. Sfax - TUNISIE</p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fa fa-phone text-center"></i> <strong>Téléphone :</strong> (+216) 58 557 411</p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fa fa-envelope text-center"></i> <strong>Email:</strong> <a href="javascript:void(0)" class="email_color_site">contacter@ardi.tn</a></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+{% endblock %}
